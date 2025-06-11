@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @className: TestController
  * @author: wanyang
- * @date: 2025/6/11 14:26
+ * @date: 2025/6/11 16:01
  * @version: 1.0
- * @description: 测试控制器
+ * @description: TODO
  */
 @RestController
 public class TestController {
 
     @GetMapping("/test")
-    public String hello(){
-        return "Hello World";
+    public String test() {
+        return "test";
     }
 
 }
