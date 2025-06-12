@@ -1,5 +1,7 @@
 package com.cn.train.member.service;
 
+import com.cn.train.member.form.MemberRegisterReq;
+
 /**
  * @className: MemberService
  * @author: wanyang
@@ -9,4 +11,10 @@ package com.cn.train.member.service;
  */
 public interface IMemberService {
 
+    /**
+     * 注册
+     * @param req
+     * @return
+     */
+    Long register(MemberRegisterReq req);
 }
