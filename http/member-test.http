@@ -3,3 +3,10 @@ Accept: application/json
 Content-Type: application/json
 
 ###
+
+
+GET http://localhost:8081/member/member/count
+Accept: application/json
+Content-Type: application/json
+
+###

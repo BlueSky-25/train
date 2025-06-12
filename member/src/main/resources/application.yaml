@@ -1,7 +1,18 @@
 spring:
   application:
     name: member.service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/train_member?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: train_member
+    password: train_member
 server:
   port: 8081
   servlet:
     context-path: /member
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+# 日志配置
+logging:
+  level:
+    com.cn.train.member.mapper: debug

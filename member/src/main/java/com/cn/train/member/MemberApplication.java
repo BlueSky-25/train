@@ -1,5 +1,6 @@
 package com.cn.train.member;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
  * @description: MemberApplication 启动类
  */
 @SpringBootApplication(scanBasePackages = {"com.cn.train.common", "com.cn.train.member"})
+@MapperScan("com.cn.train.member.mapper")
 public class MemberApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(MemberApplication.class);
