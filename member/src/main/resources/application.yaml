@@ -7,7 +7,7 @@ spring:
     username: train_member
     password: train_member
 server:
-  port: 8081
+  port: 10001
   servlet:
     context-path: /member
 mybatis:

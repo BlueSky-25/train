@@ -1,10 +1,10 @@
 server:
-  port: 7000
+  port: 10000
 spring:
   cloud:
     gateway:
       routes:
       - id: member
-        uri: http://localhost:8081
+        uri: http://localhost:10001
         predicates:
         - Path=/member/**
