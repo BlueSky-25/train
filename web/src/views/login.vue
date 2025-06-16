@@ -38,17 +38,23 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
+import axios from 'axios';
+import { notification } from 'ant-design-vue';
+import { useRouter } from 'vue-router'
+import store from "@/store";
 
 export default defineComponent({
   // name: "login-view",
   setup() {
+    const router = useRouter();
+
     const loginForm = reactive({
       mobile: '13000000000',
       code: ''
     });
 
     const sendCode = () => {
-      axios.post("/member/member/send-code", {
+      axios.post("/member/member/sendCode", {
         mobile: loginForm.mobile
       }).then(response => {
         let data = response.data;

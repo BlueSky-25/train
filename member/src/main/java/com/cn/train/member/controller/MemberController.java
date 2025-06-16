@@ -30,7 +30,7 @@ public class MemberController {
         return new RestResult<>(register);
     }
 
-    @GetMapping("/sendCode")
+    @PostMapping("/sendCode")
     public RestResult<Void> sendCode(@Valid @RequestBody MemberSendCodeReq req) {
         memberService.sendCode(req);
         return new RestResult<>();
