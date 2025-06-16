@@ -4,9 +4,16 @@ Content-Type: application/json
 
 ###
 
-
-GET http://localhost:8081/member/member/count
+GET http://localhost:10001/member/member/sendCode?mobile=13000000011
 Accept: application/json
+###
+
+POST http://localhost:10001/member/member/login
 Content-Type: application/json
 
-###
+{
+  "mobile": "13000000011",
+  "code": "1234"
+}
+
+<> 2025-06-16T153651.200.json

@@ -1,13 +1,14 @@
 package com.cn.train.member.controller;
 
+import com.cn.train.common.vo.MemberLoginResp;
 import com.cn.train.common.vo.RestResult;
+import com.cn.train.member.form.MemberLoginReq;
 import com.cn.train.member.form.MemberRegisterReq;
+import com.cn.train.member.form.MemberSendCodeReq;
 import com.cn.train.member.service.IMemberService;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @className: MemberController
@@ -29,4 +30,15 @@ public class MemberController {
         return new RestResult<>(register);
     }
 
+    @GetMapping("/sendCode")
+    public RestResult<Void> sendCode(@Valid MemberSendCodeReq req) {
+        memberService.sendCode(req);
+        return new RestResult<>();
+    }
+
+    @PostMapping("/login")
+    public RestResult<MemberLoginResp> login(@Valid @RequestBody MemberLoginReq req) {
+        MemberLoginResp resp = memberService.login(req);
+        return new RestResult<>(resp);
+    }
 }
