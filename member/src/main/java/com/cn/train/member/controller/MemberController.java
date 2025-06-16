@@ -31,7 +31,7 @@ public class MemberController {
     }
 
     @GetMapping("/sendCode")
-    public RestResult<Void> sendCode(@Valid MemberSendCodeReq req) {
+    public RestResult<Void> sendCode(@Valid @RequestBody MemberSendCodeReq req) {
         memberService.sendCode(req);
         return new RestResult<>();
     }
