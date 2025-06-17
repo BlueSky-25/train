@@ -11,13 +11,13 @@ public class PassengerQueryResp {
     /**
      * id
      */
-    @JsonSerialize(using= ToStringSerializer.class)
+    //@JsonSerialize(using= ToStringSerializer.class)
     private Long id;
 
     /**
-     * 会员id
+     * 会员id  JacksonConfig 全局统一配置
      */
-    @JsonSerialize(using= ToStringSerializer.class)
+    //@JsonSerialize(using= ToStringSerializer.class)
     private Long memberId;
 
     /**
