@@ -3,7 +3,7 @@ package com.cn.train.member.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-public class passenger implements Serializable {
+public class Passenger implements Serializable {
     private Long id;
 
     private Long memberId;
@@ -87,7 +87,7 @@ public class passenger implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        passenger other = (passenger) that;
+        Passenger other = (Passenger) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getMemberId() == null ? other.getMemberId() == null : this.getMemberId().equals(other.getMemberId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))

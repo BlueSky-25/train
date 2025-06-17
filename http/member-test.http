@@ -20,4 +20,8 @@ Content-Type: application/json
   "code": "1234"
 }
 
-<> 2025-06-16T153651.200.json
+> {%
+    client.log(JSON.stringify(response.body));
+    client.log(JSON.stringify(response.body.content.token));
+    client.global.set("token", response.body.content.token);
+%}
