@@ -27,6 +27,7 @@
         <module>gateway</module>
         <module>mybatis_generator</module>
         <module>batch</module>
+        <module>business</module>
     </modules>
     <scm>
         <connection/>
