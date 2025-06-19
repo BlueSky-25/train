@@ -1,9 +1,9 @@
 package com.cn.train.member.service;
 
 import com.cn.train.common.vo.PageResp;
-import com.cn.train.member.form.PassengerQueryReq;
-import com.cn.train.member.form.PassengerSaveReq;
-import com.cn.train.member.vo.PassengerQueryResp;
+import com.cn.train.member.dto.form.PassengerQueryReq;
+import com.cn.train.member.dto.form.PassengerSaveReq;
+import com.cn.train.member.dto.vo.PassengerQueryResp;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.cn.train.member.form;
+package com.cn.train.member.dto.form;
 
 import com.cn.train.common.form.PageReq;
 

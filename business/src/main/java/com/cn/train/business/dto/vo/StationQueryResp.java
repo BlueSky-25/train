@@ -1,39 +1,33 @@
-package com.cn.train.member.form;
+package com.cn.train.business.dto.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import java.util.Date;
 
-public class PassengerSaveReq {
+public class StationQueryResp {
 
     /**
      * id
      */
+    @JsonSerialize(using= ToStringSerializer.class)
     private Long id;
 
     /**
-     * 会员id
+     * 站名
      */
-    private Long memberId;
-
-    /**
-     * 姓名
-     */
-    @NotBlank(message = "【姓名】不能为空")
     private String name;
 
     /**
-     * 身份证
+     * 站名拼音
      */
-    @NotBlank(message = "【身份证】不能为空")
-    private String idCard;
+    private String namePinyin;
 
     /**
-     * 旅客类型|枚举[PassengerTypeEnum]
+     * 站名拼音首字母
      */
-    @NotBlank(message = "【旅客类型】不能为空")
-    private String type;
+    private String namePy;
 
     /**
      * 新增时间
@@ -55,14 +49,6 @@ public class PassengerSaveReq {
         this.id = id;
     }
 
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
-
     public String getName() {
         return name;
     }
@@ -71,20 +57,20 @@ public class PassengerSaveReq {
         this.name = name;
     }
 
-    public String getIdCard() {
-        return idCard;
+    public String getNamePinyin() {
+        return namePinyin;
     }
 
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public void setNamePinyin(String namePinyin) {
+        this.namePinyin = namePinyin;
     }
 
-    public String getType() {
-        return type;
+    public String getNamePy() {
+        return namePy;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setNamePy(String namePy) {
+        this.namePy = namePy;
     }
 
     public Date getCreateTime() {
@@ -110,10 +96,9 @@ public class PassengerSaveReq {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", memberId=").append(memberId);
         sb.append(", name=").append(name);
-        sb.append(", idCard=").append(idCard);
-        sb.append(", type=").append(type);
+        sb.append(", namePinyin=").append(namePinyin);
+        sb.append(", namePy=").append(namePy);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append("]");

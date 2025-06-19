@@ -1,12 +1,10 @@
-package com.cn.train.member.form;
+package com.cn.train.member.dto.form;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
-public class MemberSendCodeReq {
+public class MemberRegisterReq {
 
     @NotBlank(message = "【手机号】不能为空")
-    @Pattern(regexp = "^1\\d{10}$", message = "手机号码格式错误")
     private String mobile;
 
     public String getMobile() {
@@ -19,7 +17,7 @@ public class MemberSendCodeReq {
 
     @Override
     public String toString() {
-        return "MemberSendCodeReq{" +
+        return "MemberRegisterReq{" +
                 "mobile='" + mobile + '\'' +
                 '}';
     }

@@ -1,4 +1,4 @@
-package com.cn.train.member.form;
+package com.cn.train.member.dto.form;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

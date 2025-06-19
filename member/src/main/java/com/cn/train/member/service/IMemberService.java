@@ -1,9 +1,9 @@
 package com.cn.train.member.service;
 
 import com.cn.train.common.vo.MemberLoginResp;
-import com.cn.train.member.form.MemberLoginReq;
-import com.cn.train.member.form.MemberRegisterReq;
-import com.cn.train.member.form.MemberSendCodeReq;
+import com.cn.train.member.dto.form.MemberLoginReq;
+import com.cn.train.member.dto.form.MemberRegisterReq;
+import com.cn.train.member.dto.form.MemberSendCodeReq;
 
 /**
  * @className: MemberService

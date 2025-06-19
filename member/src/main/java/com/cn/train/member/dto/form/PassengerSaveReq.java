@@ -1,38 +1,38 @@
-package com.cn.train.member.vo;
+package com.cn.train.member.dto.form;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
 
-public class PassengerQueryResp {
+public class PassengerSaveReq {
 
     /**
      * id
      */
-    //@JsonSerialize(using= ToStringSerializer.class)
     private Long id;
 
     /**
-     * 会员id  JacksonConfig 全局统一配置
+     * 会员id
      */
-    //@JsonSerialize(using= ToStringSerializer.class)
     private Long memberId;
 
     /**
      * 姓名
      */
+    @NotBlank(message = "【姓名】不能为空")
     private String name;
 
     /**
      * 身份证
      */
+    @NotBlank(message = "【身份证】不能为空")
     private String idCard;
 
     /**
      * 旅客类型|枚举[PassengerTypeEnum]
      */
+    @NotBlank(message = "【旅客类型】不能为空")
     private String type;
 
     /**

@@ -1,6 +1,5 @@
 package com.cn.train.member.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import com.cn.train.common.exception.BusinessException;
 import com.cn.train.common.exception.BusinessExceptionEnum;
@@ -9,10 +8,10 @@ import com.cn.train.common.utils.SnowUtil;
 import com.cn.train.common.vo.MemberLoginResp;
 import com.cn.train.member.domain.Member;
 import com.cn.train.member.domain.MemberExample;
-import com.cn.train.member.form.MemberLoginReq;
-import com.cn.train.member.form.MemberSendCodeReq;
+import com.cn.train.member.dto.form.MemberLoginReq;
+import com.cn.train.member.dto.form.MemberSendCodeReq;
 import com.cn.train.member.mapper.MemberMapper;
-import com.cn.train.member.form.MemberRegisterReq;
+import com.cn.train.member.dto.form.MemberRegisterReq;
 import com.cn.train.member.service.IMemberService;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
