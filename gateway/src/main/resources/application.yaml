@@ -12,6 +12,10 @@ spring:
         uri: http://localhost:10002
         predicates:
         - Path=/business/**
+      - id: batch
+        uri: http://localhost:10003
+        predicates:
+          - Path=/batch/**
       globalcors:
         cors-configurations:
           '[/**]':

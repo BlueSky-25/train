@@ -17,7 +17,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
  * @description: 启动类
  */
 @SpringBootApplication(scanBasePackages = {"com.cn.train.common", "com.cn.train.batch"})
-@MapperScan("com.cn.train.batch.mapper")
+@EnableFeignClients("com.cn.train.batch.feign")
 public class BatchApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(BatchApplication.class);
