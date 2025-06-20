@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ${Domain}Service {
+public class ${Domain}ServiceImpl {
 
     private static final Logger LOG = LoggerFactory.getLogger(${Domain}Service.class);
 
@@ -47,14 +47,10 @@ public class ${Domain}Service {
         ${domain}Example.setOrderByClause("id desc");
         ${Domain}Example.Criteria criteria = ${domain}Example.createCriteria();
 
-        LOG.info("查询页码：{}", req.getPage());
-        LOG.info("每页条数：{}", req.getSize());
         PageHelper.startPage(req.getPage(), req.getSize());
         List<${Domain}> ${domain}List = ${domain}Mapper.selectByExample(${domain}Example);
 
         PageInfo<${Domain}> pageInfo = new PageInfo<>(${domain}List);
-        LOG.info("总行数：{}", pageInfo.getTotal());
-        LOG.info("总页数：{}", pageInfo.getPages());
 
         List<${Domain}QueryResp> list = BeanUtil.copyToList(${domain}List, ${Domain}QueryResp.class);
 
