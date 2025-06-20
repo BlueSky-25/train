@@ -130,9 +130,6 @@ public class DailyTrainSeatServiceImpl implements IDailyTrainSeatService {
                 .andTrainCodeEqualTo(trainCode)
                 .andSeatTypeEqualTo(seatType);
         long l = dailyTrainSeatMapper.countByExample(example);
-        if (l == 0L) {
-            return -1;
-        }
-        return (int) l;
+        return l == 0L ? -1 : (int) l;
     }
 }
