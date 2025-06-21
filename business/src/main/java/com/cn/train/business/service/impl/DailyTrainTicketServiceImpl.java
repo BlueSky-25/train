@@ -27,6 +27,8 @@ import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,6 +73,25 @@ public class DailyTrainTicketServiceImpl implements IDailyTrainTicketService {
         }
     }
 
+    @CachePut(value = "DailyTrainTicketServiceImpl.queryList2")
+    public PageResp<DailyTrainTicketQueryResp> queryList2(DailyTrainTicketQueryReq req){
+        return null;
+    }
+
+
+    /**
+     *  CachePut 结合 Cacheable使用
+     *  CachePut强制刷新缓存
+     * @param req
+     * @return
+     */
+    @CachePut(value = "DailyTrainTicketServiceImpl.queryList")
+    public PageResp<DailyTrainTicketQueryResp> queryList1(DailyTrainTicketQueryReq req){
+        return queryList(req);
+    }
+
+
+    @Cacheable(value = "DailyTrainTicketServiceImpl.queryList")
     @Override
     public PageResp<DailyTrainTicketQueryResp> queryList(DailyTrainTicketQueryReq req) {
         DailyTrainTicketExample dailyTrainTicketExample = new DailyTrainTicketExample();

@@ -12,6 +12,8 @@ server:
     context-path: /member
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    local-cache-scope: statement
 # 日志配置
 logging:
   level:
