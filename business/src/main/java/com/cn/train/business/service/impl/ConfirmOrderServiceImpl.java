@@ -113,7 +113,7 @@ public class ConfirmOrderServiceImpl implements IConfirmOrderService {
         confirmOrderMapper.deleteByPrimaryKey(id);
     }
 
-    @Async
+    //@Async
     @SentinelResource(value = "doConfirm", blockHandler = "doConfirmBlock")
     @Override
     public void doConfirm(ConfirmOrderMQDto dto) {
