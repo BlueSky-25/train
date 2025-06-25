@@ -12,7 +12,9 @@ import com.cn.train.business.domain.TrainSeat;
 import com.cn.train.business.domain.TrainStation;
 import com.cn.train.business.dto.form.DailyTrainSeatQueryReq;
 import com.cn.train.business.dto.form.DailyTrainSeatSaveReq;
+import com.cn.train.business.dto.form.SeatSellReq;
 import com.cn.train.business.dto.vo.DailyTrainSeatQueryResp;
+import com.cn.train.business.dto.vo.SeatSellResp;
 import com.cn.train.business.mapper.DailyTrainSeatMapper;
 import com.cn.train.business.service.IDailyTrainSeatService;
 import com.cn.train.business.service.ITrainSeatService;
@@ -85,10 +87,12 @@ public class DailyTrainSeatServiceImpl implements IDailyTrainSeatService {
         return pageResp;
     }
 
+    @Override
     public void delete(Long id) {
         dailyTrainSeatMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
     @Transactional
     public void genDaily(Date date, String trainCode) {
         LOG.info("生成日期【{}】车次【{}】的座位信息开始", DateUtil.formatDate(date), trainCode);
@@ -123,13 +127,47 @@ public class DailyTrainSeatServiceImpl implements IDailyTrainSeatService {
         LOG.info("生成日期【{}】车次【{}】的座位信息结束", DateUtil.formatDate(date), trainCode);
     }
 
+    public int countSeat(Date date, String trainCode) {
+        return countSeat(date, trainCode, null);
+    }
+
+    @Override
     public int countSeat(Date date, String trainCode, String seatType) {
         DailyTrainSeatExample example = new DailyTrainSeatExample();
+        DailyTrainSeatExample.Criteria criteria = example.createCriteria();
+        criteria.andDateEqualTo(date)
+                .andTrainCodeEqualTo(trainCode);
+        if (StrUtil.isNotBlank(seatType)) {
+            criteria.andSeatTypeEqualTo(seatType);
+        }
+        long l = dailyTrainSeatMapper.countByExample(example);
+        return l == 0L ? -1 : (int) l;
+    }
+
+    @Override
+    public List<DailyTrainSeat> selectByCarriage(Date date, String trainCode, Integer carriageIndex) {
+        DailyTrainSeatExample example = new DailyTrainSeatExample();
+        example.setOrderByClause("carriage_seat_index asc");
         example.createCriteria()
                 .andDateEqualTo(date)
                 .andTrainCodeEqualTo(trainCode)
-                .andSeatTypeEqualTo(seatType);
-        long l = dailyTrainSeatMapper.countByExample(example);
-        return l == 0L ? -1 : (int) l;
+                .andCarriageIndexEqualTo(carriageIndex);
+        return dailyTrainSeatMapper.selectByExample(example);
+    }
+
+    /**
+     * 查询某日某车次的所有座位
+     */
+    @Override
+    public List<SeatSellResp> querySeatSell(SeatSellReq req) {
+        Date date = req.getDate();
+        String trainCode = req.getTrainCode();
+        LOG.info("查询日期【{}】车次【{}】的座位销售信息", DateUtil.formatDate(date), trainCode);
+        DailyTrainSeatExample dailyTrainSeatExample = new DailyTrainSeatExample();
+        dailyTrainSeatExample.setOrderByClause("`carriage_index` asc, carriage_seat_index asc");
+        dailyTrainSeatExample.createCriteria()
+                .andDateEqualTo(date)
+                .andTrainCodeEqualTo(trainCode);
+        return BeanUtil.copyToList(dailyTrainSeatMapper.selectByExample(dailyTrainSeatExample), SeatSellResp.class);
     }
 }

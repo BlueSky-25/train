@@ -1,6 +1,7 @@
 package com.cn.train.business.service;
 
 import com.cn.train.business.domain.DailyTrain;
+import com.cn.train.business.domain.DailyTrainTicket;
 import com.cn.train.business.dto.form.DailyTrainTicketQueryReq;
 import com.cn.train.business.dto.form.DailyTrainTicketSaveReq;
 import com.cn.train.business.dto.vo.DailyTrainTicketQueryResp;
@@ -24,4 +25,6 @@ public interface IDailyTrainTicketService {
     void delete(Long id);
 
     void genDaily(DailyTrain dailyTrain, Date date, String trainCode);
+
+    DailyTrainTicket selectByUnique(Date date, String trainCode, String start, String end);
 }

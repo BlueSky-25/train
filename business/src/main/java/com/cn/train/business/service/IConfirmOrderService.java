@@ -1,5 +1,7 @@
 package com.cn.train.business.service;
 
+import com.cn.train.business.domain.ConfirmOrder;
+import com.cn.train.business.dto.dto.ConfirmOrderMQDto;
 import com.cn.train.business.dto.form.ConfirmOrderDoReq;
 import com.cn.train.business.dto.form.ConfirmOrderQueryReq;
 import com.cn.train.business.dto.vo.ConfirmOrderQueryResp;
@@ -20,5 +22,12 @@ public interface IConfirmOrderService {
 
     void delete(Long id);
 
-    void doConfirm(ConfirmOrderDoReq req);
+    void doConfirm(ConfirmOrderMQDto confirmOrderMQDto);
+
+    Integer cancel(Long id);
+
+    void updateStatus(ConfirmOrder confirmOrder);
+
+    Integer queryLineCount(Long id);
+
 }

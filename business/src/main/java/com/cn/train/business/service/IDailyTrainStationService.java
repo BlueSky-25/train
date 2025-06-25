@@ -23,4 +23,6 @@ public interface IDailyTrainStationService {
     void delete(Long id);
 
     void genDaily(Date date, String trainCode);
+
+    long countByTrainCode(Date date, String trainCode);
 }

@@ -1,5 +1,8 @@
 package com.cn.train.business;
 
+import com.alibaba.csp.sentinel.slots.block.RuleConstant;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
+import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +12,9 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.scheduling.annotation.EnableAsync;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @className: BusinessApplication
@@ -31,5 +37,20 @@ public class BusinessApplication {
         ConfigurableEnvironment environment = application.run(args).getEnvironment();
         LOG.info("启动成功 --> {}", BusinessApplication.class.getName());
         LOG.info("地址: \t http://127.0.0.1:{}", environment.getProperty("server.port"));
+
+        // 模拟 限流规则
+        // initFlowRules();
+        // LOG.info("已定义限流规则");
+    }
+
+    private static void initFlowRules(){
+        List<FlowRule> rules = new ArrayList<>();
+        FlowRule rule = new FlowRule();
+        rule.setResource("doConfirm");
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        // Set limit QPS to 20.
+        rule.setCount(1);
+        rules.add(rule);
+        FlowRuleManager.loadRules(rules);
     }
 }

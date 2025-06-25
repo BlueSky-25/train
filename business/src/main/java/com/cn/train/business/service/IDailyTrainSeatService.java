@@ -1,11 +1,15 @@
 package com.cn.train.business.service;
 
+import com.cn.train.business.domain.DailyTrainSeat;
 import com.cn.train.business.dto.form.DailyTrainSeatQueryReq;
 import com.cn.train.business.dto.form.DailyTrainSeatSaveReq;
+import com.cn.train.business.dto.form.SeatSellReq;
 import com.cn.train.business.dto.vo.DailyTrainSeatQueryResp;
+import com.cn.train.business.dto.vo.SeatSellResp;
 import com.cn.train.common.vo.PageResp;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @className: IDailyTrainSeatService
@@ -24,5 +28,12 @@ public interface IDailyTrainSeatService {
 
     void genDaily(Date date, String trainCode);
 
+    int countSeat(Date date, String trainCode);
+
     int countSeat(Date date, String trainCode, String seatType);
+
+    List<DailyTrainSeat> selectByCarriage(Date date, String trainCode, Integer index);
+
+    List<SeatSellResp> querySeatSell(SeatSellReq req);
+
 }
